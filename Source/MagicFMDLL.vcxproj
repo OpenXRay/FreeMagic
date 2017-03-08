@@ -12,6 +12,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{08F2A75F-9374-4112-89A5-334F9D9F0332}</ProjectGuid>
+	<WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -32,24 +33,20 @@
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC70.props" />
+    <Import Project="..\..\..\Common.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC70.props" />
+    <Import Project="..\..\..\Common.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>12.0.30501.0</_ProjectFileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>.\ReleaseDLL\</OutDir>
-    <IntDir>.\ReleaseDLL\</IntDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>.\DebugDLL\</OutDir>
-    <IntDir>.\DebugDLL\</IntDir>
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -58,7 +55,6 @@
       <MkTypLibCompatible>true</MkTypLibCompatible>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <TargetEnvironment>Win32</TargetEnvironment>
-      <TypeLibraryName>.\ReleaseDLL/MagicFMDLL.tlb</TypeLibraryName>
     </Midl>
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
@@ -78,10 +74,6 @@
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
       <FloatingPointModel>Fast</FloatingPointModel>
       <PrecompiledHeader />
-      <PrecompiledHeaderOutputFile>.\ReleaseDLL/MagicFMDLL.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>.\ReleaseDLL/</AssemblerListingLocation>
-      <ObjectFileName>.\ReleaseDLL/</ObjectFileName>
-      <ProgramDataBaseFileName>.\ReleaseDLL/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <CompileAs>Default</CompileAs>
@@ -93,82 +85,9 @@
     <Link>
       <AdditionalOptions>/MACHINE:I386 %(AdditionalOptions)</AdditionalOptions>
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>..\Library\ReleaseDLL\MagicFM.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <ProgramDatabaseFile>.\ReleaseDLL/MagicFM.pdb</ProgramDatabaseFile>
-      <ImportLibrary>.\ReleaseDLL/MagicFM.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>copy Approximation2D\*.h ..\Include
-copy Approximation2D\*.pkg ..\Include
-copy Approximation3D\*.h ..\Include
-copy Approximation3D\*.pkg ..\Include
-copy Containment2D\*.h ..\Include
-copy Containment2D\*.inl ..\Include
-copy Containment2D\*.pkg ..\Include
-copy Containment3D\*.h ..\Include
-copy Containment3D\*.inl ..\Include
-copy Containment3D\*.pkg ..\Include
-copy Core\*.h ..\Include
-copy Core\*.inl ..\Include
-copy Core\*.pkg ..\Include
-copy Core2D\*.h ..\Include
-copy Core2D\*.inl ..\Include
-copy Core2D\*.pkg ..\Include
-copy Core3D\*.h ..\Include
-copy Core3D\*.inl ..\Include
-copy Core3D\*.pkg ..\Include
-copy Curve2D\*.h ..\Include
-copy Curve2D\*.inl ..\Include
-copy Curve2D\*.pkg ..\Include
-copy Curve3D\*.h ..\Include
-copy Curve3D\*.inl ..\Include
-copy Curve3D\*.pkg ..\Include
-copy Distance2D\*.h ..\Include
-copy Distance2D\*.pkg ..\Include
-copy Distance3D\*.h ..\Include
-copy Distance3D\*.pkg ..\Include
-copy ImageAnalysis\*.h ..\Include
-copy ImageAnalysis\*.inl ..\Include
-copy ImageAnalysis\*.pkg ..\Include
-copy Interpolation1D\*.h ..\Include
-copy Interpolation1D\*.inl ..\Include
-copy Interpolation1D\*.pkg ..\Include
-copy Interpolation2D\*.h ..\Include
-copy                           Interpolation2D\*.inl ..\Include
-copy Interpolation2D\*.pkg ..\Include
-copy Interpolation3D\*.h ..\Include
-copy Interpolation3D\*.inl ..\Include
-copy Interpolation3D\*.pkg ..\Include
-copy Intersection2D\*.h ..\Include
-copy Intersection2D\*.pkg ..\Include
-copy Intersection3D\*.h ..\Include
-copy Intersection3D\*.pkg ..\Include
-copy Numerics\*.h ..\Include
-copy Numerics\*.inl ..\Include
-copy Numerics\*.pkg ..\Include
-copy Projection\*.h ..\Include
-copy Projection\*.inl ..\Include
-copy Projection\*.pkg ..\Include
-copy Surface\*.h ..\Include
-copy Surface\*.inl ..\Include
-copy Surface\*.pkg ..\Include
-copy Tessellation2D\*.h ..\Include
-copy Tessellation2D\*.inl ..\Include
-copy Tessellation2D\*.pkg ..\Include
-copy Tessellation3D\*.h ..\Include
-copy Tessellation3D\*.inl ..\Include
-copy Tessellation3D\*.pkg ..\Include
-copy MgcRTLib.h ..\Include
-copy MagicFMLibType.h ..\Include
-copy MagicFM.pkg  ..\Include
-copy $(OutDir)MagicFM.lib ..\Library\$(OutDir)
-copy ..\Include\*.h ..\..\Sdk\Include
-copy ..\Include\*.inl ..\..\Sdk\Include
-copy ..\Include\*.pkg ..\..\Sdk\Include
-copy ..\Library\$(OutDir)MagicFM.lib ..\..\Sdk\Library\$(OutDir)
-copy ..\Library\$(OutDir)MagicFM.dll      ..\..\Sdk\Library\$(OutDir)
-</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -177,7 +96,6 @@ copy ..\Library\$(OutDir)MagicFM.dll      ..\..\Sdk\Library\$(OutDir)
       <MkTypLibCompatible>true</MkTypLibCompatible>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <TargetEnvironment>Win32</TargetEnvironment>
-      <TypeLibraryName>.\DebugDLL/MagicFMDLL.tlb</TypeLibraryName>
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
@@ -186,10 +104,6 @@ copy ..\Library\$(OutDir)MagicFM.dll      ..\..\Sdk\Library\$(OutDir)
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeader />
-      <PrecompiledHeaderOutputFile>.\DebugDLL/MagicFMDLL.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>.\DebugDLL/</AssemblerListingLocation>
-      <ObjectFileName>.\DebugDLL/</ObjectFileName>
-      <ProgramDataBaseFileName>.\DebugDLL/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
@@ -202,83 +116,10 @@ copy ..\Library\$(OutDir)MagicFM.dll      ..\..\Sdk\Library\$(OutDir)
     <Link>
       <AdditionalOptions>/MACHINE:I386 %(AdditionalOptions)</AdditionalOptions>
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>..\Library\DebugDLL\MagicFM.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>.\DebugDLL/MagicFM.pdb</ProgramDatabaseFile>
-      <ImportLibrary>.\DebugDLL/MagicFM.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>copy Approximation2D\*.h ..\Include
-copy Approximation2D\*.pkg ..\Include
-copy Approximation3D\*.h ..\Include
-copy Approximation3D\*.pkg ..\Include
-copy Containment2D\*.h ..\Include
-copy Containment2D\*.inl ..\Include
-copy Containment2D\*.pkg ..\Include
-copy Containment3D\*.h ..\Include
-copy Containment3D\*.inl ..\Include
-copy Containment3D\*.pkg ..\Include
-copy Core\*.h ..\Include
-copy Core\*.inl ..\Include
-copy Core\*.pkg ..\Include
-copy Core2D\*.h ..\Include
-copy Core2D\*.inl ..\Include
-copy Core2D\*.pkg ..\Include
-copy Core3D\*.h ..\Include
-copy Core3D\*.inl ..\Include
-copy Core3D\*.pkg ..\Include
-copy Curve2D\*.h ..\Include
-copy Curve2D\*.inl ..\Include
-copy Curve2D\*.pkg ..\Include
-copy Curve3D\*.h ..\Include
-copy Curve3D\*.inl ..\Include
-copy Curve3D\*.pkg ..\Include
-copy Distance2D\*.h ..\Include
-copy Distance2D\*.pkg ..\Include
-copy Distance3D\*.h ..\Include
-copy Distance3D\*.pkg ..\Include
-copy ImageAnalysis\*.h ..\Include
-copy ImageAnalysis\*.inl ..\Include
-copy ImageAnalysis\*.pkg ..\Include
-copy Interpolation1D\*.h ..\Include
-copy Interpolation1D\*.inl ..\Include
-copy Interpolation1D\*.pkg ..\Include
-copy Interpolation2D\*.h ..\Include
-copy                           Interpolation2D\*.inl ..\Include
-copy Interpolation2D\*.pkg ..\Include
-copy Interpolation3D\*.h ..\Include
-copy Interpolation3D\*.inl ..\Include
-copy Interpolation3D\*.pkg ..\Include
-copy Intersection2D\*.h ..\Include
-copy Intersection2D\*.pkg ..\Include
-copy Intersection3D\*.h ..\Include
-copy Intersection3D\*.pkg ..\Include
-copy Numerics\*.h ..\Include
-copy Numerics\*.inl ..\Include
-copy Numerics\*.pkg ..\Include
-copy Projection\*.h ..\Include
-copy Projection\*.inl ..\Include
-copy Projection\*.pkg ..\Include
-copy Surface\*.h ..\Include
-copy Surface\*.inl ..\Include
-copy Surface\*.pkg ..\Include
-copy Tessellation2D\*.h ..\Include
-copy Tessellation2D\*.inl ..\Include
-copy Tessellation2D\*.pkg ..\Include
-copy Tessellation3D\*.h ..\Include
-copy Tessellation3D\*.inl ..\Include
-copy Tessellation3D\*.pkg ..\Include
-copy MgcRTLib.h ..\Include
-copy MagicFMLibType.h ..\Include
-copy MagicFM.pkg  ..\Include
-copy $(OutDir)MagicFM.lib ..\Library\$(OutDir)
-copy ..\Include\*.h ..\..\Sdk\Include
-copy ..\Include\*.inl ..\..\Sdk\Include
-copy ..\Include\*.pkg ..\..\Sdk\Include
-copy ..\Library\$(OutDir)MagicFM.lib ..\..\Sdk\Library\$(OutDir)
-copy ..\Library\$(OutDir)MagicFM.dll      ..\..\Sdk\Library\$(OutDir)
-</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
